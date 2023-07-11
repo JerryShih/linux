@@ -62,4 +62,17 @@ config CRYPTO_SHA256_RISCV64
 	  - Zvkb vector crypto extension
 	  - Zvknha or Zvknhb vector crypto extensions
 
+config CRYPTO_SHA512_RISCV64
+	default y if RISCV_ISA_V
+	tristate "Hash functions: SHA-384 and SHA-512"
+	depends on 64BIT && RISCV_ISA_V
+	select CRYPTO_HASH
+	select CRYPTO_SHA512
+	help
+	  SHA-512 secure hash algorithm (FIPS 180)
+
+	  Architecture: riscv64 using:
+	  - Zvkb vector crypto extension
+	  - Zvknhb vector crypto extension
+
 endmenu
