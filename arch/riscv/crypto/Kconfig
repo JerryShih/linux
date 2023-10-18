@@ -35,4 +35,18 @@ config CRYPTO_AES_BLOCK_RISCV64
 	  - Zvkg vector crypto extension (XTS)
 	  - Zvkned vector crypto extension
 
+config CRYPTO_GHASH_RISCV64
+	default y if RISCV_ISA_V
+	tristate "Hash functions: GHASH"
+	depends on 64BIT && RISCV_ISA_V
+	select CRYPTO_GCM
+	select CRYPTO_GHASH
+	select CRYPTO_HASH
+	select CRYPTO_LIB_GF128MUL
+	help
+	  GCM GHASH function (NIST SP 800-38D)
+
+	  Architecture: riscv64 using:
+	  - Zvkg vector crypto extension
+
 endmenu
