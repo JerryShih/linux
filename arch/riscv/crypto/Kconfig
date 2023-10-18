@@ -35,6 +35,18 @@ config CRYPTO_AES_BLOCK_RISCV64
 	  - Zvkg vector crypto extension (XTS)
 	  - Zvkned vector crypto extension
 
+config CRYPTO_CHACHA20_RISCV64
+	default y if RISCV_ISA_V
+	tristate "Ciphers: ChaCha20"
+	depends on 64BIT && RISCV_ISA_V
+	select CRYPTO_SKCIPHER
+	select CRYPTO_LIB_CHACHA_GENERIC
+	help
+	  Length-preserving ciphers: ChaCha20 stream cipher algorithm
+
+	  Architecture: riscv64 using:
+	  - Zvkb vector crypto extension
+
 config CRYPTO_GHASH_RISCV64
 	default y if RISCV_ISA_V
 	tristate "Hash functions: GHASH"
