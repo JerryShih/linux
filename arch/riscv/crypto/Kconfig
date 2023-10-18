@@ -2,4 +2,16 @@
 
 menu "Accelerated Cryptographic Algorithms for CPU (riscv)"
 
+config CRYPTO_AES_RISCV64
+	default y if RISCV_ISA_V
+	tristate "Ciphers: AES"
+	depends on 64BIT && RISCV_ISA_V
+	select CRYPTO_AES
+	select CRYPTO_ALGAPI
+	help
+	  Block ciphers: AES cipher algorithms (FIPS-197)
+
+	  Architecture: riscv64 using:
+	  - Zvkned vector crypto extension
+
 endmenu
